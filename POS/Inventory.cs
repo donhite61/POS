@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace POS
 {
@@ -10,6 +12,44 @@ namespace POS
     {
         public string TblName { get; set; }
         public DateTime UpdateTime { get; set; }
+        public static string ConnString = "server=69.89.31.188;user=hitephot_don;database=hitephot_pos;port=3306;password=Hite1985;";
+
+        public static bool CheckIfTableIsDirty(string _tblName, DateTime _locUpdateTimeDate)
+        {
+            
+            var sql = "select upd_UpdateTime from tableUpdateTime where upd_TblName = '" + _tblName + "'";
+            using (var conn = new MySqlConnection(ConnString))
+            using (var cmd = new MySqlCommand(sql, conn))
+            {
+                conn.Open();
+                var result = cmd.ExecuteScalar();
+                if (result == null)
+                    return false; // if table updatetime not found, table new?
+
+                DateTime webUpdTime;
+                if (DateTime.TryParse(result.ToString(), out webUpdTime))
+                    if (webUpdTime == _locUpdateTimeDate)
+                        return false;
+            }
+            return true;
+        }
+
+        public static bool UpdateWebTableDate(string _tblName, DateTime _locUpdateTimeDate)
+        {
+            var dateTimeMySql = _locUpdateTimeDate.ToString("yyyy-MM-dd HH:mm:ss");
+            var sql = "INSERT INTO tableUpdateTime(upd_TblName, upd_UpdateTime) VALUES(?tblName, ?locUpdateTimeDate)" +
+                      "ON DUPLICATE KEY UPDATE upd_UpdateTime = '" + dateTimeMySql + "'";
+            using (var conn = new MySqlConnection(ConnString))
+            using (var cmd = new MySqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("?tblName", _tblName);
+                cmd.Parameters.AddWithValue("?locUpdateTimeDate", dateTimeMySql);
+                conn.Open();
+                var result = cmd.ExecuteScalar();
+                var success = cmd.ExecuteNonQuery() > 0 ? true : false;
+                return success;
+            }
+        }
     }
 
     class Location
