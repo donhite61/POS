@@ -1,22 +1,59 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace POS
 {
     class TableUpdateTimes
     {
-        public string TblName { get; set; }
-        public DateTime UpdateTime { get; set; }
+        public static bool CheckIfTableIsDirty(string _tblName, DateTime _locUpdateTimeDate)
+        {
+            var webUpdTime = Sql.GetUpdateTimeOfTable(_tblName);
+            int result = DateTime.Compare(webUpdTime, _locUpdateTimeDate);
+            return result >= 0 ? false : true;
+        }
+
+        public static bool UpdateWebTableDate(string _tblName, DateTime _locUpdateTimeDate)
+        {
+            var result = Sql.UpdateWebTableDate(_tblName, _locUpdateTimeDate);
+            return result;
+        }
     }
 
-    class Location
+        public class Location
     {
-        public UInt32 Id { get; set; }
+        public UInt32? Id { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
+
+        public static DateTime UpdateTime { get; set; }
+        public static List<Location> locList { get; set; }
+
+        public static void LoadLocations()
+        {
+            locList = Sql.GetLocationsList();
+        }
+
+        public void SaveLocation()
+        {
+            if (this.Id == null)
+                Sql.InsertLocation(this.Code, this.Description);
+            
+            else
+                Sql.UpdateLocation(Convert.ToUInt32(this.Id), this.Code, this.Description);
+        }
+
+        public void DeleteLocation()
+        {
+            Sql.DeleteLocation();
+        }
+
+        
     }
 
     class Departments

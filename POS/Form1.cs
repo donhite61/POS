@@ -16,5 +16,20 @@ namespace POS
         {
             InitializeComponent();
         }
+
+        private void but_AddTime_Click(object sender, EventArgs e)
+        {
+            TableUpdateTimes.UpdateWebTableDate("vendors", DateTime.Now);
+        }
+
+        private void but_CheckDirty_Click(object sender, EventArgs e)
+        {
+            TableUpdateTimes.CheckIfTableIsDirty("vendor", DateTime.Now);
+        }
+
+        private void tab_Locations_Entered(object sender, EventArgs e)
+        {
+
+        }
     }
 }
