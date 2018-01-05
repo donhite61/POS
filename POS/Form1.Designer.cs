@@ -30,18 +30,17 @@
         {
             this.settings_TabControl = new System.Windows.Forms.TabControl();
             this.tab_Locations = new System.Windows.Forms.TabPage();
-            this.tab_Deptments = new System.Windows.Forms.TabPage();
-            this.txtBox_LocId = new System.Windows.Forms.TextBox();
-            this.lbl_LocId = new System.Windows.Forms.Label();
-            this.txtBox_LocCode = new System.Windows.Forms.TextBox();
-            this.lbl_LocCode = new System.Windows.Forms.Label();
-            this.txtBox_LocDesc = new System.Windows.Forms.TextBox();
-            this.lbl_LocDesc = new System.Windows.Forms.Label();
-            this.dgv_Locations = new System.Windows.Forms.DataGridView();
+            this.but_ChkDirty = new System.Windows.Forms.Button();
+            this.but_AddTime = new System.Windows.Forms.Button();
             this.but_LocSave = new System.Windows.Forms.Button();
-            this.tab_Vendors = new System.Windows.Forms.TabPage();
-            this.tab_Inventory = new System.Windows.Forms.TabPage();
-            this.tab_Components = new System.Windows.Forms.TabPage();
+            this.dgv_Locations = new System.Windows.Forms.DataGridView();
+            this.lbl_LocDesc = new System.Windows.Forms.Label();
+            this.lbl_LocCode = new System.Windows.Forms.Label();
+            this.lbl_LocId = new System.Windows.Forms.Label();
+            this.txtBox_LocDesc = new System.Windows.Forms.TextBox();
+            this.txtBox_LocCode = new System.Windows.Forms.TextBox();
+            this.txtBox_LocId = new System.Windows.Forms.TextBox();
+            this.tab_Deptments = new System.Windows.Forms.TabPage();
             this.but_DptSave = new System.Windows.Forms.Button();
             this.dgv_Deptments = new System.Windows.Forms.DataGridView();
             this.lbl_DptDesc = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@
             this.txtBox_DptDesc = new System.Windows.Forms.TextBox();
             this.txtBox_DptCode = new System.Windows.Forms.TextBox();
             this.txtBox_DptId = new System.Windows.Forms.TextBox();
+            this.tab_Vendors = new System.Windows.Forms.TabPage();
             this.btn_vendSave = new System.Windows.Forms.Button();
             this.dgv_Vendors = new System.Windows.Forms.DataGridView();
             this.lbl_VendDesc = new System.Windows.Forms.Label();
@@ -58,16 +58,16 @@
             this.txtBox_VendDesc = new System.Windows.Forms.TextBox();
             this.txtBox_VendCode = new System.Windows.Forms.TextBox();
             this.txtBox_VendId = new System.Windows.Forms.TextBox();
+            this.tab_Inventory = new System.Windows.Forms.TabPage();
+            this.tab_Components = new System.Windows.Forms.TabPage();
             this.tab_Updates = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.but_AddTime = new System.Windows.Forms.Button();
-            this.but_ChkDirty = new System.Windows.Forms.Button();
             this.settings_TabControl.SuspendLayout();
             this.tab_Locations.SuspendLayout();
-            this.tab_Deptments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Locations)).BeginInit();
-            this.tab_Vendors.SuspendLayout();
+            this.tab_Deptments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Deptments)).BeginInit();
+            this.tab_Vendors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendors)).BeginInit();
             this.tab_Updates.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -109,6 +109,94 @@
             this.tab_Locations.UseVisualStyleBackColor = true;
             this.tab_Locations.Enter += new System.EventHandler(this.tab_Locations_Entered);
             // 
+            // but_ChkDirty
+            // 
+            this.but_ChkDirty.Location = new System.Drawing.Point(289, 351);
+            this.but_ChkDirty.Name = "but_ChkDirty";
+            this.but_ChkDirty.Size = new System.Drawing.Size(98, 26);
+            this.but_ChkDirty.TabIndex = 4;
+            this.but_ChkDirty.Text = "check dirty";
+            this.but_ChkDirty.UseVisualStyleBackColor = true;
+            this.but_ChkDirty.Click += new System.EventHandler(this.but_CheckDirty_Click);
+            // 
+            // but_AddTime
+            // 
+            this.but_AddTime.Location = new System.Drawing.Point(151, 351);
+            this.but_AddTime.Name = "but_AddTime";
+            this.but_AddTime.Size = new System.Drawing.Size(98, 26);
+            this.but_AddTime.TabIndex = 4;
+            this.but_AddTime.Text = "add time";
+            this.but_AddTime.UseVisualStyleBackColor = true;
+            this.but_AddTime.Click += new System.EventHandler(this.but_AddTime_Click);
+            // 
+            // but_LocSave
+            // 
+            this.but_LocSave.Location = new System.Drawing.Point(773, 363);
+            this.but_LocSave.Name = "but_LocSave";
+            this.but_LocSave.Size = new System.Drawing.Size(92, 30);
+            this.but_LocSave.TabIndex = 3;
+            this.but_LocSave.Text = "Save";
+            this.but_LocSave.UseVisualStyleBackColor = true;
+            // 
+            // dgv_Locations
+            // 
+            this.dgv_Locations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Locations.Location = new System.Drawing.Point(121, 138);
+            this.dgv_Locations.Name = "dgv_Locations";
+            this.dgv_Locations.Size = new System.Drawing.Size(745, 181);
+            this.dgv_Locations.TabIndex = 2;
+            // 
+            // lbl_LocDesc
+            // 
+            this.lbl_LocDesc.AutoSize = true;
+            this.lbl_LocDesc.Location = new System.Drawing.Point(55, 79);
+            this.lbl_LocDesc.Name = "lbl_LocDesc";
+            this.lbl_LocDesc.Size = new System.Drawing.Size(60, 13);
+            this.lbl_LocDesc.TabIndex = 1;
+            this.lbl_LocDesc.Text = "Description";
+            this.lbl_LocDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_LocCode
+            // 
+            this.lbl_LocCode.AutoSize = true;
+            this.lbl_LocCode.Location = new System.Drawing.Point(83, 53);
+            this.lbl_LocCode.Name = "lbl_LocCode";
+            this.lbl_LocCode.Size = new System.Drawing.Size(32, 13);
+            this.lbl_LocCode.TabIndex = 1;
+            this.lbl_LocCode.Text = "Code";
+            this.lbl_LocCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_LocId
+            // 
+            this.lbl_LocId.AutoSize = true;
+            this.lbl_LocId.Location = new System.Drawing.Point(99, 27);
+            this.lbl_LocId.Name = "lbl_LocId";
+            this.lbl_LocId.Size = new System.Drawing.Size(16, 13);
+            this.lbl_LocId.TabIndex = 1;
+            this.lbl_LocId.Text = "Id";
+            this.lbl_LocId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtBox_LocDesc
+            // 
+            this.txtBox_LocDesc.Location = new System.Drawing.Point(121, 76);
+            this.txtBox_LocDesc.Name = "txtBox_LocDesc";
+            this.txtBox_LocDesc.Size = new System.Drawing.Size(107, 20);
+            this.txtBox_LocDesc.TabIndex = 0;
+            // 
+            // txtBox_LocCode
+            // 
+            this.txtBox_LocCode.Location = new System.Drawing.Point(121, 50);
+            this.txtBox_LocCode.Name = "txtBox_LocCode";
+            this.txtBox_LocCode.Size = new System.Drawing.Size(107, 20);
+            this.txtBox_LocCode.TabIndex = 0;
+            // 
+            // txtBox_LocId
+            // 
+            this.txtBox_LocId.Location = new System.Drawing.Point(121, 24);
+            this.txtBox_LocId.Name = "txtBox_LocId";
+            this.txtBox_LocId.Size = new System.Drawing.Size(107, 20);
+            this.txtBox_LocId.TabIndex = 0;
+            // 
             // tab_Deptments
             // 
             this.tab_Deptments.Controls.Add(this.but_DptSave);
@@ -126,112 +214,6 @@
             this.tab_Deptments.TabIndex = 1;
             this.tab_Deptments.Text = "Departments";
             this.tab_Deptments.UseVisualStyleBackColor = true;
-            // 
-            // txtBox_LocId
-            // 
-            this.txtBox_LocId.Location = new System.Drawing.Point(121, 24);
-            this.txtBox_LocId.Name = "txtBox_LocId";
-            this.txtBox_LocId.Size = new System.Drawing.Size(107, 20);
-            this.txtBox_LocId.TabIndex = 0;
-            // 
-            // lbl_LocId
-            // 
-            this.lbl_LocId.AutoSize = true;
-            this.lbl_LocId.Location = new System.Drawing.Point(99, 27);
-            this.lbl_LocId.Name = "lbl_LocId";
-            this.lbl_LocId.Size = new System.Drawing.Size(16, 13);
-            this.lbl_LocId.TabIndex = 1;
-            this.lbl_LocId.Text = "Id";
-            this.lbl_LocId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtBox_LocCode
-            // 
-            this.txtBox_LocCode.Location = new System.Drawing.Point(121, 50);
-            this.txtBox_LocCode.Name = "txtBox_LocCode";
-            this.txtBox_LocCode.Size = new System.Drawing.Size(107, 20);
-            this.txtBox_LocCode.TabIndex = 0;
-            // 
-            // lbl_LocCode
-            // 
-            this.lbl_LocCode.AutoSize = true;
-            this.lbl_LocCode.Location = new System.Drawing.Point(83, 53);
-            this.lbl_LocCode.Name = "lbl_LocCode";
-            this.lbl_LocCode.Size = new System.Drawing.Size(32, 13);
-            this.lbl_LocCode.TabIndex = 1;
-            this.lbl_LocCode.Text = "Code";
-            this.lbl_LocCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtBox_LocDesc
-            // 
-            this.txtBox_LocDesc.Location = new System.Drawing.Point(121, 76);
-            this.txtBox_LocDesc.Name = "txtBox_LocDesc";
-            this.txtBox_LocDesc.Size = new System.Drawing.Size(107, 20);
-            this.txtBox_LocDesc.TabIndex = 0;
-            // 
-            // lbl_LocDesc
-            // 
-            this.lbl_LocDesc.AutoSize = true;
-            this.lbl_LocDesc.Location = new System.Drawing.Point(55, 79);
-            this.lbl_LocDesc.Name = "lbl_LocDesc";
-            this.lbl_LocDesc.Size = new System.Drawing.Size(60, 13);
-            this.lbl_LocDesc.TabIndex = 1;
-            this.lbl_LocDesc.Text = "Description";
-            this.lbl_LocDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dgv_Locations
-            // 
-            this.dgv_Locations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Locations.Location = new System.Drawing.Point(121, 138);
-            this.dgv_Locations.Name = "dgv_Locations";
-            this.dgv_Locations.Size = new System.Drawing.Size(745, 181);
-            this.dgv_Locations.TabIndex = 2;
-            // 
-            // but_LocSave
-            // 
-            this.but_LocSave.Location = new System.Drawing.Point(773, 363);
-            this.but_LocSave.Name = "but_LocSave";
-            this.but_LocSave.Size = new System.Drawing.Size(92, 30);
-            this.but_LocSave.TabIndex = 3;
-            this.but_LocSave.Text = "Save";
-            this.but_LocSave.UseVisualStyleBackColor = true;
-            // 
-            // tab_Vendors
-            // 
-            this.tab_Vendors.Controls.Add(this.btn_vendSave);
-            this.tab_Vendors.Controls.Add(this.dgv_Vendors);
-            this.tab_Vendors.Controls.Add(this.lbl_VendDesc);
-            this.tab_Vendors.Controls.Add(this.lbl_VendCode);
-            this.tab_Vendors.Controls.Add(this.lbl_VdrId);
-            this.tab_Vendors.Controls.Add(this.txtBox_VendDesc);
-            this.tab_Vendors.Controls.Add(this.txtBox_VendCode);
-            this.tab_Vendors.Controls.Add(this.txtBox_VendId);
-            this.tab_Vendors.Location = new System.Drawing.Point(4, 22);
-            this.tab_Vendors.Name = "tab_Vendors";
-            this.tab_Vendors.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Vendors.Size = new System.Drawing.Size(1018, 420);
-            this.tab_Vendors.TabIndex = 2;
-            this.tab_Vendors.Text = "Vendors";
-            this.tab_Vendors.UseVisualStyleBackColor = true;
-            // 
-            // tab_Inventory
-            // 
-            this.tab_Inventory.Location = new System.Drawing.Point(4, 22);
-            this.tab_Inventory.Name = "tab_Inventory";
-            this.tab_Inventory.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Inventory.Size = new System.Drawing.Size(1018, 420);
-            this.tab_Inventory.TabIndex = 3;
-            this.tab_Inventory.Text = "Inventory";
-            this.tab_Inventory.UseVisualStyleBackColor = true;
-            // 
-            // tab_Components
-            // 
-            this.tab_Components.Location = new System.Drawing.Point(4, 22);
-            this.tab_Components.Name = "tab_Components";
-            this.tab_Components.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Components.Size = new System.Drawing.Size(1018, 420);
-            this.tab_Components.TabIndex = 4;
-            this.tab_Components.Text = "Components";
-            this.tab_Components.UseVisualStyleBackColor = true;
             // 
             // but_DptSave
             // 
@@ -301,6 +283,24 @@
             this.txtBox_DptId.Size = new System.Drawing.Size(107, 20);
             this.txtBox_DptId.TabIndex = 6;
             // 
+            // tab_Vendors
+            // 
+            this.tab_Vendors.Controls.Add(this.btn_vendSave);
+            this.tab_Vendors.Controls.Add(this.dgv_Vendors);
+            this.tab_Vendors.Controls.Add(this.lbl_VendDesc);
+            this.tab_Vendors.Controls.Add(this.lbl_VendCode);
+            this.tab_Vendors.Controls.Add(this.lbl_VdrId);
+            this.tab_Vendors.Controls.Add(this.txtBox_VendDesc);
+            this.tab_Vendors.Controls.Add(this.txtBox_VendCode);
+            this.tab_Vendors.Controls.Add(this.txtBox_VendId);
+            this.tab_Vendors.Location = new System.Drawing.Point(4, 22);
+            this.tab_Vendors.Name = "tab_Vendors";
+            this.tab_Vendors.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Vendors.Size = new System.Drawing.Size(1018, 420);
+            this.tab_Vendors.TabIndex = 2;
+            this.tab_Vendors.Text = "Vendors";
+            this.tab_Vendors.UseVisualStyleBackColor = true;
+            // 
             // btn_vendSave
             // 
             this.btn_vendSave.Location = new System.Drawing.Point(822, 365);
@@ -369,6 +369,26 @@
             this.txtBox_VendId.Size = new System.Drawing.Size(107, 20);
             this.txtBox_VendId.TabIndex = 6;
             // 
+            // tab_Inventory
+            // 
+            this.tab_Inventory.Location = new System.Drawing.Point(4, 22);
+            this.tab_Inventory.Name = "tab_Inventory";
+            this.tab_Inventory.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Inventory.Size = new System.Drawing.Size(1018, 420);
+            this.tab_Inventory.TabIndex = 3;
+            this.tab_Inventory.Text = "Inventory";
+            this.tab_Inventory.UseVisualStyleBackColor = true;
+            // 
+            // tab_Components
+            // 
+            this.tab_Components.Location = new System.Drawing.Point(4, 22);
+            this.tab_Components.Name = "tab_Components";
+            this.tab_Components.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Components.Size = new System.Drawing.Size(1018, 420);
+            this.tab_Components.TabIndex = 4;
+            this.tab_Components.Text = "Components";
+            this.tab_Components.UseVisualStyleBackColor = true;
+            // 
             // tab_Updates
             // 
             this.tab_Updates.Controls.Add(this.dataGridView1);
@@ -388,26 +408,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(857, 277);
             this.dataGridView1.TabIndex = 0;
             // 
-            // but_AddTime
-            // 
-            this.but_AddTime.Location = new System.Drawing.Point(151, 351);
-            this.but_AddTime.Name = "but_AddTime";
-            this.but_AddTime.Size = new System.Drawing.Size(98, 26);
-            this.but_AddTime.TabIndex = 4;
-            this.but_AddTime.Text = "add time";
-            this.but_AddTime.UseVisualStyleBackColor = true;
-            this.but_AddTime.Click += new System.EventHandler(this.but_AddTime_Click);
-            // 
-            // but_ChkDirty
-            // 
-            this.but_ChkDirty.Location = new System.Drawing.Point(289, 351);
-            this.but_ChkDirty.Name = "but_ChkDirty";
-            this.but_ChkDirty.Size = new System.Drawing.Size(98, 26);
-            this.but_ChkDirty.TabIndex = 4;
-            this.but_ChkDirty.Text = "check dirty";
-            this.but_ChkDirty.UseVisualStyleBackColor = true;
-            this.but_ChkDirty.Click += new System.EventHandler(this.but_CheckDirty_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,15 +416,16 @@
             this.Controls.Add(this.settings_TabControl);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Enter += new System.EventHandler(this.tab_Locations_Entered);
             this.settings_TabControl.ResumeLayout(false);
             this.tab_Locations.ResumeLayout(false);
             this.tab_Locations.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Locations)).EndInit();
             this.tab_Deptments.ResumeLayout(false);
             this.tab_Deptments.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Locations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Deptments)).EndInit();
             this.tab_Vendors.ResumeLayout(false);
             this.tab_Vendors.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Deptments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendors)).EndInit();
             this.tab_Updates.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

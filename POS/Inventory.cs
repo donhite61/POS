@@ -34,18 +34,26 @@ namespace POS
         public static DateTime UpdateTime { get; set; }
         public static List<Location> locList { get; set; }
 
+        public Location(UInt32? _id, string _code, string _description) //instantiating location updates server and retrieves Id
+        {
+            this.Id = _id;
+            this.Code = _code;
+            this.Description = _description;
+            var sqlId = Sql.InsertLocation(this.Code, this.Description);
+            if (sqlId != null)
+                TableUpdateTimes.UpdateWebTableDate(this.Code, DateTime.Now);
+        }
+
         public static void LoadLocations()
         {
             locList = Sql.GetLocationsList();
         }
 
-        public void SaveLocation()
+        public void UpdateLocation()
         {
-            if (this.Id == null)
-                Sql.InsertLocation(this.Code, this.Description);
-            
-            else
-                Sql.UpdateLocation(Convert.ToUInt32(this.Id), this.Code, this.Description);
+            var updateOk = Sql.UpdateLocation(Convert.ToUInt32(this.Id), this.Code, this.Description);
+            if (updateOk)
+                TableUpdateTimes.UpdateWebTableDate(this.Code, DateTime.Now);
         }
 
         public void DeleteLocation()

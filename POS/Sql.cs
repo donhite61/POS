@@ -29,8 +29,9 @@ namespace POS
             return webUpdTime;
         }
 
-        internal static bool InsertLocation(string _code, string _descr)
+        internal static UInt32? InsertLocation(string _code, string _descr)
         {
+            UInt32? sqlId = null;
             var sql = "INSERT INTO location(loc_Code, loc_Description) VALUES(?Code, ?Descr)";
             using (var conn = new MySqlConnection(ConnString))
             using (var cmd = new MySqlCommand(sql, conn))
@@ -39,19 +40,25 @@ namespace POS
                 cmd.Parameters.AddWithValue("?Descr", _descr);
                 conn.Open();
                 var result = cmd.ExecuteNonQuery();
-                return result > 0 ? true : false;
+                if( result > 0 )
+                {
+                    cmd.CommandText = "SELECT LAST_INSERT_ID()";
+                    result = (int)cmd.ExecuteScalar();
+                    sqlId = Convert.ToUInt32(result);
+                }
             }
+            
+            return sqlId;
         }
 
         internal static bool UpdateLocation(UInt32 _id, string _code, string _descr)
         {
-            var sql = "UPDATE location SET loc_Code = ?Code, " +
-                                         "loc_Description = ?Desc, " +
+            var sql = "UPDATE location SET loc_Code = ?Code, loc_Description = ?Desc, " +
                        "WHERE loc_Id = ?id";
             using (var conn = new MySqlConnection(ConnString))
             using (var cmd = new MySqlCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("?Id", _id = );
+                cmd.Parameters.AddWithValue("?Id", _id);
                 cmd.Parameters.AddWithValue("?Code", _code);
                 cmd.Parameters.AddWithValue("?Descr", _descr);
                 conn.Open();
@@ -78,10 +85,10 @@ namespace POS
                 {
                     while( reader.Read())
                     {
-                        var loc = new Location();
-                        loc.Id = Convert.ToUInt32(reader[0]);
-                        loc.Code = Convert.ToString(reader[1]);
-                        loc.Description = Convert.ToString(reader[2]);
+                        var id = Convert.ToUInt32(reader[0]);
+                        var code = Convert.ToString(reader[1]);
+                        var description = Convert.ToString(reader[2]);
+                        var loc = new Location(id, code, description);
                         list.Add(loc);
                     }
                 }
