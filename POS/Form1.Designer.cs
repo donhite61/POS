@@ -30,9 +30,7 @@
         {
             this.settings_TabControl = new System.Windows.Forms.TabControl();
             this.tab_Locations = new System.Windows.Forms.TabPage();
-            this.but_ChkDirty = new System.Windows.Forms.Button();
-            this.but_AddTime = new System.Windows.Forms.Button();
-            this.but_LocSave = new System.Windows.Forms.Button();
+            this.txt_UpdateTime = new System.Windows.Forms.Label();
             this.dgv_Locations = new System.Windows.Forms.DataGridView();
             this.lbl_LocDesc = new System.Windows.Forms.Label();
             this.lbl_LocCode = new System.Windows.Forms.Label();
@@ -90,9 +88,7 @@
             // 
             // tab_Locations
             // 
-            this.tab_Locations.Controls.Add(this.but_ChkDirty);
-            this.tab_Locations.Controls.Add(this.but_AddTime);
-            this.tab_Locations.Controls.Add(this.but_LocSave);
+            this.tab_Locations.Controls.Add(this.txt_UpdateTime);
             this.tab_Locations.Controls.Add(this.dgv_Locations);
             this.tab_Locations.Controls.Add(this.lbl_LocDesc);
             this.tab_Locations.Controls.Add(this.lbl_LocCode);
@@ -109,42 +105,26 @@
             this.tab_Locations.UseVisualStyleBackColor = true;
             this.tab_Locations.Enter += new System.EventHandler(this.tab_Locations_Entered);
             // 
-            // but_ChkDirty
+            // txt_UpdateTime
             // 
-            this.but_ChkDirty.Location = new System.Drawing.Point(289, 351);
-            this.but_ChkDirty.Name = "but_ChkDirty";
-            this.but_ChkDirty.Size = new System.Drawing.Size(98, 26);
-            this.but_ChkDirty.TabIndex = 4;
-            this.but_ChkDirty.Text = "check dirty";
-            this.but_ChkDirty.UseVisualStyleBackColor = true;
-            this.but_ChkDirty.Click += new System.EventHandler(this.but_CheckDirty_Click);
-            // 
-            // but_AddTime
-            // 
-            this.but_AddTime.Location = new System.Drawing.Point(151, 351);
-            this.but_AddTime.Name = "but_AddTime";
-            this.but_AddTime.Size = new System.Drawing.Size(98, 26);
-            this.but_AddTime.TabIndex = 4;
-            this.but_AddTime.Text = "add time";
-            this.but_AddTime.UseVisualStyleBackColor = true;
-            this.but_AddTime.Click += new System.EventHandler(this.but_AddTime_Click);
-            // 
-            // but_LocSave
-            // 
-            this.but_LocSave.Location = new System.Drawing.Point(773, 363);
-            this.but_LocSave.Name = "but_LocSave";
-            this.but_LocSave.Size = new System.Drawing.Size(92, 30);
-            this.but_LocSave.TabIndex = 3;
-            this.but_LocSave.Text = "Save";
-            this.but_LocSave.UseVisualStyleBackColor = true;
+            this.txt_UpdateTime.AutoSize = true;
+            this.txt_UpdateTime.Location = new System.Drawing.Point(312, 32);
+            this.txt_UpdateTime.Name = "txt_UpdateTime";
+            this.txt_UpdateTime.Size = new System.Drawing.Size(35, 13);
+            this.txt_UpdateTime.TabIndex = 5;
+            this.txt_UpdateTime.Text = "label1";
             // 
             // dgv_Locations
             // 
             this.dgv_Locations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Locations.Location = new System.Drawing.Point(121, 138);
+            this.dgv_Locations.MultiSelect = false;
             this.dgv_Locations.Name = "dgv_Locations";
             this.dgv_Locations.Size = new System.Drawing.Size(745, 181);
             this.dgv_Locations.TabIndex = 2;
+            this.dgv_Locations.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Locations_RowEnter);
+            this.dgv_Locations.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Locations_RowLeave);
+            this.dgv_Locations.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_Locations_UserDeletingRow);
             // 
             // lbl_LocDesc
             // 
@@ -445,7 +425,6 @@
         private System.Windows.Forms.TextBox txtBox_LocCode;
         private System.Windows.Forms.TextBox txtBox_LocId;
         private System.Windows.Forms.TabPage tab_Deptments;
-        private System.Windows.Forms.Button but_LocSave;
         private System.Windows.Forms.TabPage tab_Vendors;
         private System.Windows.Forms.TabPage tab_Inventory;
         private System.Windows.Forms.TabPage tab_Components;
@@ -465,10 +444,9 @@
         private System.Windows.Forms.TextBox txtBox_VendDesc;
         private System.Windows.Forms.TextBox txtBox_VendCode;
         private System.Windows.Forms.TextBox txtBox_VendId;
-        private System.Windows.Forms.Button but_ChkDirty;
-        private System.Windows.Forms.Button but_AddTime;
         private System.Windows.Forms.TabPage tab_Updates;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label txt_UpdateTime;
     }
 }
 
